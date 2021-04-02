@@ -1,10 +1,9 @@
-import testdata from '../testdata.js';
-
+//const data = require("./testdata.js");
 Feature('MK_test');
 
 Scenario('fill MK form', ({ I }) => {
-    I.amOnPage('/');
-    I.wait(6);
+    I.amOnPage('');
+    I.wait(2);
     I.see("Personal Information")
     
     I.fillField("//input[@id='personalAmountCreditRequested']", "5000");
@@ -20,22 +19,34 @@ Scenario('fill MK form', ({ I }) => {
     I.wait(1);
     I.fillField("//input[@id='birthDate']", "06/26/1983");
     I.fillField("//input[@id='socialSecurityNumber']", "609390866");
-    I.selectOption("//input[@id='mui-autocomplete-16467']", "United States");
-    I.selectOption("//select[@id='idType']", "U.S. Driver's License");
-    I.selectOption("//select[@id='issuedBy']", "California");
+
+    I.fillField('//*[@class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"]', "United States");
+    
+    I.fillField('//*[@class="MuiSelect-root MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"]', "U.S. Driver's License");
+    
+    I.selectOption("//*[@class='MuiSelect-root MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input']", "California");
+    
     I.fillField("//input[@id='idValue']", "12345");
     I.fillField("//input[@id='issueDate']", "01/01/2010");
     I.fillField("//input[@id='expireDate']", "01/01/2025");
     I.click("//span[contains(text(),'Next')]");
     I.wait(1);
-    I.fillField("//input[@id='phoneNumbers[0].contactNumber", "6194905026");
-    I.selectOption("//select[@id='phoneNumbers[0].telecomContactMechPurposeId", "Mobile");
-    I.fillField("//input[@id='emailAddress']", "eyup83@gmail.com");
-    I.fillField("//input[@id='verifyEmailAddress']", "eyup83@gmail.com");
+   
+    I.fillField("//*[@class='MuiInputBase-input MuiOutlinedInput-input']", "6194905026");
+    
+    I.selectOption('//select[@class="MuiSelect-root MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"]', "Mobile");
+    
+    I.fillField('//*[@class="MuiInputBase-input MuiOutlinedInput-input"]', "eyup83@gmail.com");
+    
+    I.fillField("//*[@class='MuiInputBase-input MuiOutlinedInput-input']", "eyup83@gmail.com");
+    
     I.click("//span[contains(text(),'Next')]");
-    I.selectOption("//select[@id='residenceStatusEnumId']", "Rent");
-    I.fillField("//input[@id='housingPayment']", testdata.monthlypayment);
-    I.fillField("//input[@id='occupation']", testdata.monthlypayment);
+   
+    I.selectOption("//*[@class='MuiSelect-root MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input']", "Rent");
+   
+    I.fillField("//*[@text='Housing Payment Monthly')]", "1500"); 
+    
+    I.fillField("//input[@id='occupation']", "Cashier");
     I.fillField("//select[@id='employments[0].employmentStatusEnumId", "Not employed");
     I.fillField("//input[@id='employments[0].years", "1");
     I.fillField("//input[@id='employments[0].months", "1");
